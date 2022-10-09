@@ -55,9 +55,9 @@ async function request(id) {
 
         /*try {
             const fs = require("node:fs");
-            await fs.promises.writeFile(`C:/ids/${id}.text`, await res.text(););
+            await fs.promises.writeFile(`C:/ids/${id}.txt`, await res.text(););
 
-            console.log(`File ${id}.json has created successfully.`);
+            //console.log(`File ${id}.txt has created successfully.`);
         } catch (err) {
             // ignore file exists errors
             if (err.code !== "EEXIST") {
