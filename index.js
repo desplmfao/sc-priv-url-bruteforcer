@@ -1,9 +1,9 @@
 const method = "GET" // POST, GET, OPTIONS, DELETE, PUT
 const body = null
-const rate_limit = 10 // higher is faster.
+const rate_limit = 1 // higher is faster.
 const token_length = 5
 
-const song_url = "https://soundcloud.com/lildvrkie/gunk-rock"
+const song_url = "https://soundcloud.com/lildvrkie/g"
 
 
 
@@ -45,7 +45,7 @@ async function request(id) {
         );
 
         if (!res.ok) {
-            console.error("Response was not OK.", `${song_url}/s-${id}`, res.status, await res.text());
+            console.error(`${song_url}/s-${id}`, res.status, await res.text());
             return;
         }
 
