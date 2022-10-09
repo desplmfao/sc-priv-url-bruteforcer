@@ -1,4 +1,5 @@
 const method = "GET" // POST, GET, OPTIONS, DELETE, PUT
+const body = null
 const rate_limit = 10 // higher is faster.
 const token_length = 5
 
@@ -39,7 +40,7 @@ async function request(id) {
             {
                 method: method,
                 compress: true,
-                //body: JSON.stringify("{}"),
+                body: body,
             }
         );
 
@@ -55,9 +56,9 @@ async function request(id) {
 
         /*try {
             const fs = require("node:fs");
-            await fs.promises.writeFile(`C:/ids/${id}.txt`, await res.text(););
+            await fs.promises.writeFile(`C:/ids/${id}.text`, await res.text(););
 
-            //console.log(`File ${id}.txt has created successfully.`);
+            console.log(`File ${id}.json has created successfully.`);
         } catch (err) {
             // ignore file exists errors
             if (err.code !== "EEXIST") {
