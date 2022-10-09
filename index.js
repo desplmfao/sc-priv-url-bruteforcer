@@ -1,9 +1,8 @@
-const method = "GET" // POST, GET, OPTIONS, DELETE, PUT
-const body = null
-const rate_limit = 10 // higher is faster.
+const rate_limit = 1 // higher is faster.
 const token_length = 5
 
-const song_url = "https://soundcloud.com/lildvrkie/gunk-rock"
+const song_url = "https://soundcloud.com/lildvrkie/s"
+const bare_server = "https://uv.moderategarden.mom/"
 
 
 
@@ -11,13 +10,14 @@ const song_url = "https://soundcloud.com/lildvrkie/gunk-rock"
 
 
 
+const bare = require('@tomphttp/bare-client');
 
 const crypto = require("node:crypto");
 const util = require("node:util");
 
-const random = util.promisify(crypto.randomInt);
 
 async function gen(length) {
+    const random = util.promisify(crypto.randomInt);
     var result = "";
 
     const validChars = 
@@ -35,24 +35,19 @@ async function gen(length) {
 
 async function request(id) {
     try {
-        const res = await fetch(
-            `https://api-v2.soundcloud.com/resolve?url=${song_url}/s-${id}&format=json&client_id=gsPNGqVqXY4QlaFqDv7WBWglYHdTPsh6`,
-            {
-                method: method,
-                compress: true,
-                body: body,
+        bare(`${bare_server}`).then(async (client) => {
+            const res = await client.fetch(`https://api-v2.soundcloud.com/resolve?url=${song_url}/s-${id}&format=json&client_id=gsPNGqVqXY4QlaFqDv7WBWglYHdTPsh6`);
+        
+            if (!res.ok) {
+                console.error(`${song_url}/s-${id}`, res.status, await res.text());
+                return;
             }
-        );
-
-        if (!res.ok) {
-            console.error("Response was not OK.", `${song_url}/s-${id}`, res.status, await res.text());
-            return;
-        }
-
-        if (res.ok) {
-            console.error(`${song_url}/s-${id}`, res.status, await res.text());
-            process.exit()
-        }
+    
+            if (res.ok) {
+                console.error(`${song_url}/s-${id}`, res.status, await res.text());
+                process.exit()
+            }
+        });
         
     } catch (err) {
         console.error("Caught", err);
