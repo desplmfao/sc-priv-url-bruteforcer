@@ -53,18 +53,7 @@ async function request(id) {
             console.error(`${song_url}/s-${id}`, res.status, await res.text());
             process.exit()
         }
-
-        /*try {
-            const fs = require("node:fs");
-            await fs.promises.writeFile(`C:/ids/${id}.text`, await res.text(););
-
-            console.log(`File ${id}.json has created successfully.`);
-        } catch (err) {
-            // ignore file exists errors
-            if (err.code !== "EEXIST") {
-                throw err;
-            }
-        }*/
+        
     } catch (err) {
         console.error("Caught", err);
         // re-attempt
