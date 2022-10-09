@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/desplmfao/sc-priv-url-guesser/issues"
   },
-  "homepage": "https://github.com/desplmfao/sc-priv-url-guesser#readme"
+  "homepage": "https://github.com/desplmfao/sc-priv-url-guesser#readme",
+  "dependencies": {
+    "@tomphttp/bare-client": "^1.1.0"
+  }
 }
