@@ -1,7 +1,7 @@
 const method = "GET" // POST, GET, OPTIONS, DELETE, PUT
 const body = null
 const rate_limit = 1 // higher is faster.
-const token_length = 5
+const token_length = 5 // songs after ~sept 2019 use 12
 
 const song_url = "https://soundcloud.com/lildvrkie/g"
 
